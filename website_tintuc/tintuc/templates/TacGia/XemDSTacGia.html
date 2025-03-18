@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Tác Giả</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        caption {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danh Sách Tác Giả</h1>
+    <table>
+        <caption>Thông tin các Tác Giả hiện có</caption>
+        <tr>
+            <th>ID</th>
+            <th>Tên Tác Giả</th>
+            <th>Email</th>
+        </tr>
+        {% for tacgia in tacgia %}
+        <tr>
+            <td>{{ tacgia.id_tac_gia }}</td>
+            <td>{{ tacgia.tac_gia }}</td>
+            <td>{{ tacgia.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

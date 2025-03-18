@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Người Dùng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        caption {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Danh Sách Người Dùng</h1>
+    <table>
+        <caption>Thông tin các người dùng hiện có</caption>
+        <tr>
+            <th>ID</th>
+            <th>Role</th>
+            <th>Tên Tài Khoản</th>
+            <th>Mật Khẩu</th>
+            <th>Email</th>
+        </tr>
+        {% for nd in nguoidung %}
+        <tr>
+            <td>{{ nd.id_nguoi_dung }}</td>
+            <td>{{ nd.vai_tro }}</td>
+            <td>{{ nd.ten_tai_khoan }}</td>
+            <td>{{ nd.mat_khau }}</td>
+            <td>{{ nd.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Mới Bài Viết</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+      }
+      form {
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          width: 50%; /* Kích thước form là 50% của màn hình */
+          max-width: 600px; /* Giới hạn chiều rộng tối đa */
+      }
+      input,
+      textarea,
+      select {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-sizing: border-box;
+          font-size: 16px; /* Font size */
+      }
+      select {
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+          background-repeat: no-repeat;
+          background-position: right 8px top 50%;
+          padding-right: 30px;
+          cursor: pointer;
+      }
+      input[type="submit"] {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 12px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+      input[type="submit"]:hover {
+          background-color: #0056b3;
+      }
+  </style>
+
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h2 style="text-align: center;">Thêm Mới Bài Viết</h2>
+        <label for="id_bai_viet">ID Bài Viết:</label>
+        <input type="number" id="id_bai_viet" name="id_bai_viet" required>
+        <label for="ngay_xuat_ban">Ngày Xuất Bản:</label>
+        <input type="date" id="ngay_xuat_ban" name="ngay_xuat_ban" required>
+        <label for="chuyen_muc">Chuyên Mục:</label>
+        <select name="chuyen_muc" required>
+            <option value="">Chọn Chuyên Mục</option>
+            {% for chuyenmuc in chuyenmuc %}
+                <option value="{{ chuyenmuc.id_chuyen_muc }}">{{ chuyenmuc.ten_chuyen_muc }}</option>
+            {% endfor %}
+        </select>   
+        <label for="tac_gia">Tác Giả:</label>
+        <select name="tac_gia" required>
+            <option value="">Chọn Tác Giả</option>
+            {% for tacgia in tacgia %}
+                <option value="{{ tacgia.id_tac_gia }}">{{ tacgia.tac_gia }}</option>
+            {% endfor %}
+        </select>
+        
+        <label for="tieu_de">Tiêu Đề:</label>
+        <input type="text" id="tieu_de" name="tieu_de" required>
+        <label for="noi_dung">Nội Dung:</label>
+        <textarea id="noi_dung" name="noi_dung" rows="6" required></textarea>
+        
+        
+        <input type="submit" value="Thêm Mới">
+    </form>
+</body>
+</html>
